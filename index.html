@@ -9,6 +9,24 @@
 </head>
 <body x-data="pizzaCart()">
 
+  <div class="cart">
+    <h2>Shopping Cart</h2>
+    <div x-show="cart.length === 0">Your cart is empty.</div>
+    <div x-show="cart.length > 0">
+      <template x-for="item in cart" :key="item.name">
+        <div>
+          <span x-text="item.name.charAt(0).toUpperCase() + item.name.slice(1) + ' Pizza'"></span>: 
+          <span x-text="'R' + item.price"></span> x <span x-text="item.quantity"></span>
+          <button @click="removeFromCart(item.name)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Remove</button>
+        </div>
+      </template>
+      <div>
+        <h3>Total Cost: R<span x-text="totalCost"></span></h3>
+      </div>
+      <button @click="checkout()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" x-show="cart.length > 0">Check Out</button>
+    </div>
+  </div>
+
   <div class="perfect">
     <h1>Perfect Pizza</h1>
   </div>
@@ -48,23 +66,7 @@
     </div>
   </div>
 
-  <div class="cart">
-    <h2>Shopping Cart</h2>
-    <div x-show="cart.length === 0">Your cart is empty.</div>
-    <div x-show="cart.length > 0">
-      <template x-for="item in cart" :key="item.name">
-        <div>
-          <span x-text="item.name.charAt(0).toUpperCase() + item.name.slice(1) + ' Pizza'"></span>: 
-          <span x-text="'R' + item.price"></span> x <span x-text="item.quantity"></span>
-          <button @click="removeFromCart(item.name)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Remove</button>
-        </div>
-      </template>
-      <div>
-        <h3>Total Cost: R<span x-text="totalCost"></span></h3>
-      </div>
-      <button @click="checkout()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" x-show="cart.length > 0">Check Out</button>
-    </div>
-  </div>
+  
 
   <div x-show="showMessage" x-text="message" class="message"></div>
 
