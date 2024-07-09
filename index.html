@@ -26,6 +26,9 @@
       <button @click="checkout()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" x-show="cart.length > 0">Check Out</button>
     </div>
   </div>
+  
+
+  <div x-show="showMessage" x-text="message" class="message"></div>
 
   <div class="perfect">
     <h1>Perfect Pizza</h1>
@@ -68,7 +71,15 @@
 
   
 
-  <div x-show="showMessage" x-text="message" class="message"></div>
+  <div class="pizza contacts">
+    <h2>Contact Details</h2>
+    <div>
+      Contact us at: (021)-541-1000<br>
+      Twitter: @perfectpizza<br>
+      Facebook: /fb<br>
+      Instagram: /insta<br>
+    </div>
+  </div>
 
   <script src="scripts.js"></script>
 </body>
